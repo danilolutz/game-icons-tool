@@ -1,0 +1,44 @@
+{
+  "name": "game-icons-tool",
+  "version": "1.0.0",
+  "description": "A CLI tool to create icons svg, css and others like dart icons class from game-icons.net",
+  "main": "index.js",
+  "type": "module",
+  "author": "Danilo Lutz <danilolutz@protonmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "adm-zip": "^0.5.16",
+    "axios": "^1.7.9",
+    "chalk": "^5.3.0",
+    "cli-progress": "^3.12.0",
+    "cli-table3": "^0.6.5",
+    "commander": "^12.1.0",
+    "figlet": "^1.8.0",
+    "fs-extra": "^11.2.0",
+    "inquirer": "^12.1.0",
+    "svg2ttf": "^6.0.3",
+    "svgicons2svgfont": "^15.0.0"
+  },
+  "scripts": {
+    "gameicons": "node --no-warnings=ExperimentalWarning --loader ts-node/esm src/index.ts",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@types/adm-zip": "^0.5.7",
+    "@types/cli-progress": "^3.11.6",
+    "@types/figlet": "^1.7.0",
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^22.10.1",
+    "@types/svg2ttf": "^5.0.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  },
+  "ts-node": {
+    "require": [
+      "ts-node/register"
+    ]
+  },
+  "bin": {
+    "gameicons": "./dist/index.js"
+  }
+}

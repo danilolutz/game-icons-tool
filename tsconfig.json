@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "module": "ESNext", // Usa módulos ESNext
+    "target": "ESNext", // Define o alvo para as versões mais recentes do JavaScript
+    "moduleResolution": "node", // Resolução de módulos como no Node.js
+    "esModuleInterop": true, // Para compatibilidade com módulos CommonJS
+    "skipLibCheck": true, // Ignora verificações de tipos nas bibliotecas
+    "strict": true, // Habilita checagens de tipos mais rigorosas
+    "sourceMap": true, // Geração de mapas de origem para o TypeScript
+    "resolveJsonModule": true, // Permite importar arquivos JSON
+    "outDir": "./dist", // Diretório de saída para os arquivos compilados
+    "rootDir": "./src", // Diretório raiz do código-fonte
+    "allowJs": true, // Permite arquivos JS dentro do código
+    "allowSyntheticDefaultImports": true
+  },
+  "ts-node": {
+    "experimentalSpecifierResolution": "node",
+    "transpileOnly": true,
+    "esm": true,
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
