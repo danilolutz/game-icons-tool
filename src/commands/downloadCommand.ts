@@ -19,10 +19,18 @@ export default class DownloadCommand implements ICommand {
   }
 
   async execute(output: string): Promise<void> {
+    console.log(chalk.green.bold("Download command\n"));
+
+    if (!output) {
+      console.log(
+        chalk.red.bold(
+          "Download command requires the output argument!\n\nExample: gameicons download downloads"
+        )
+      );
+    }
+
     const url =
       "https://game-icons.net/archives/svg/zip/ffffff/000000/game-icons.net.svg.zip";
-
-    console.log(chalk.green.bold("Download command\n"));
     try {
       ensureDirSync(output);
       console.log(`Output folder "${output}" was ready!`);

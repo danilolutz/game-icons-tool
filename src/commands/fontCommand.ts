@@ -26,7 +26,7 @@ export default class FontCommand implements ICommand {
   private readonly progressBar: SingleBar;
 
   command = "font <source> <output>";
-  description = `Generates icons ttf font.\n\nExample: gameicons font downloads/font`;
+  description = `Generates icons ttf font.\n\nExample: gameicons font donwloads downloads/font`;
 
   constructor(
     private readonly program: Command,
@@ -128,6 +128,22 @@ export default class FontCommand implements ICommand {
 
   async execute(source: string, output: string): Promise<void> {
     console.log(chalk.green.bold("Web command\n"));
+
+    if (!source) {
+      console.log(
+        chalk.red.bold(
+          "Font command requires the source argument!\n\nExample: gameicons generate downloads downloads/font"
+        )
+      );
+    }
+
+    if (!output) {
+      console.log(
+        chalk.red.bold(
+          "Font command requires the output argument!\n\nExample: gameicons generate downloads downloads/font"
+        )
+      );
+    }
 
     ensureDirSync(output);
     console.log(`Output folder "${output}" was ready!\n`);

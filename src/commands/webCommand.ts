@@ -25,7 +25,7 @@ export default class WebCommand implements ICommand {
   private readonly progressBar: SingleBar;
 
   command = "web <source> <output>";
-  description = `Generates svg and css for web icons.\n\nExample: gameicons web downloads/web`;
+  description = `Generates svg and css for web icons.\n\nExample: gameicons web donwloads downloads/web`;
 
   constructor(
     private readonly program: Command,
@@ -170,6 +170,22 @@ export default class WebCommand implements ICommand {
 
   async execute(source: string, output: string): Promise<void> {
     console.log(chalk.green.bold("Web command\n"));
+
+    if (!source) {
+      console.log(
+        chalk.red.bold(
+          "Web command requires the source argument!\n\nExample: gameicons web downloads downloads/web"
+        )
+      );
+    }
+
+    if (!output) {
+      console.log(
+        chalk.red.bold(
+          "Wev command requires the output argument!\n\nExample: gameicons web downloads downloads/web"
+        )
+      );
+    }
 
     ensureDirSync(output);
     console.log(`Output folder "${output}" was ready!\n`);
