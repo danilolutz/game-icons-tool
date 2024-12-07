@@ -12,7 +12,9 @@ export default class ListCommand implements ICommand {
     private readonly program: Command,
     private readonly services: Map<string, any>
   ) {
-    //
+    this.program
+      .helpOption("-h, --help", "Show available commands")
+      .action(this.execute.bind(this));
   }
 
   execute(): void {
@@ -22,7 +24,7 @@ export default class ListCommand implements ICommand {
     });
 
     this.program.commands.forEach((cmd) => {
-      table.push([cmd.name(), cmd.description()]);
+      table.push([chalk.bold(cmd.name()), cmd.description()]);
     });
 
     console.log(
@@ -41,6 +43,8 @@ export default class ListCommand implements ICommand {
         this.program.version() +
         "\n\n" +
         this.program.description() +
+        "\n\n" +
+        `Usage: gameicons ${this.program.usage()}` +
         "\n"
     );
 

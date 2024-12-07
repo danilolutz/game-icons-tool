@@ -16,7 +16,7 @@ import { fileURLToPath } from "url";
   program
     .name("gameicons")
     .description(
-      "A CLI tool to create icons svg, css and others like dart icons class from game-icons.net"
+      "A CLI tool to create icons svg, css and others like dart icons class from https://game-icons.net"
     )
     .version("1.0.0");
 
