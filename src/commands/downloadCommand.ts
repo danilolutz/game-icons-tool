@@ -9,7 +9,7 @@ import chalk from "chalk";
 
 export default class DownloadCommand implements ICommand {
   command = "download <output>";
-  description = `Download the icons zip from game-icons.net to the output\ndirectory.\n\nExample: gameicons download downloads`;
+  description = `Download the icons zip from https://game-icons.net to the output\ndirectory.\n\nExample: gameicons download downloads`;
 
   constructor(
     private readonly program: Command,

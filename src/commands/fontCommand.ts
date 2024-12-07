@@ -26,7 +26,7 @@ export default class FontCommand implements ICommand {
   private readonly progressBar: SingleBar;
 
   command = "font <source> <output>";
-  description = `Generates icons ttf font.\n\nExample: gameicons font donwloads downloads/font`;
+  description = `Generates icons ttf font.\n\nExample: gameicons font downloads downloads/font`;
 
   constructor(
     private readonly program: Command,
@@ -58,6 +58,10 @@ export default class FontCommand implements ICommand {
         }
       })
     );
+
+    this.files.sort((a, b) => {
+      return a.name.localeCompare(b.name);
+    });
 
     return this.files;
   }
