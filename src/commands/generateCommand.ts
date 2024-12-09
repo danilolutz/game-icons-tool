@@ -168,12 +168,10 @@ class GameIconsFont {
       char.toUpperCase()
     );
 
-    // camelCase.replace(/\d/g, (digit) => this.numberMap[digit]);
-
     if (this.reservedWords.has(camelCase)) {
       camelCase += "_";
     }
-    // console.log(camelCase);
+
     return camelCase;
   }
 
