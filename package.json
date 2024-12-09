@@ -8,7 +8,7 @@
   "license": "MIT",
   "main": "dist/index.js",
   "bin": {
-    "gameicons": "./dist/index.js"
+    "gameicons": "dist/index.js"
   },
   "scripts": {
     "gameicons": "node --no-warnings=ExperimentalWarning --loader ts-node/esm src/index.ts",
