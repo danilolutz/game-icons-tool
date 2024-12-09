@@ -25,11 +25,19 @@ jobs:
       - name: Build the project
         run: npm run build
 
+      - name: Generate Changelog
+        id: changelog
+        run: |
+          echo "## Changelog" > changelog.txt
+          echo "" >> changelog.txt
+          git log --oneline --no-merges $(git describe --tags --abbrev=0)..HEAD >> changelog.txt
+        shell: bash
+
       - name: Log in to npm
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
 
       - name: Publish to npm
-        run: npm publish --access public
+        run: npm publish --access --dry-run public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
@@ -38,6 +46,6 @@ jobs:
         with:
           tag_name: ${{ github.ref_name }}
           release_name: "Release ${{ github.ref_name }}"
-          body: "Versão publicada automaticamente pelo GitHub Actions."
+          body: ${{ steps.changelog.outputs.content || "New release was created" }}
           draft: false
           prerelease: false

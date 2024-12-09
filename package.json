@@ -11,7 +11,8 @@
   },
   "scripts": {
     "gameicons": "node --no-warnings=ExperimentalWarning --loader ts-node/esm src/index.ts",
-    "build": "rm -rf dist && tsc"
+    "build": "rm -rf dist && tsc",
+    "release": "npm run build && npm version patch -m \"Release %s\" && git push --follow-tags"
   },
   "dependencies": {
     "adm-zip": "^0.5.16",
