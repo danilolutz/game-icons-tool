@@ -24,7 +24,7 @@ export default class DownloadCommand implements ICommand {
     if (!output) {
       console.log(
         chalk.red.bold(
-          "Download command requires the output argument!\n\nExample: gameicons download downloads"
+          "Download command requires the output argument!\n\nExample: gameicons download workspace/downloads"
         )
       );
     }

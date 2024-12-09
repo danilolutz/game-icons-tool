@@ -26,7 +26,7 @@ export default class FontCommand implements ICommand {
   private readonly progressBar: SingleBar;
 
   command = "font <source> <output>";
-  description = `Generates icons ttf font.\n\nExample: gameicons font downloads downloads/font`;
+  description = `Generates icons ttf font.\n\nExample: gameicons font workspace/downloads workspace/font`;
 
   constructor(
     private readonly program: Command,

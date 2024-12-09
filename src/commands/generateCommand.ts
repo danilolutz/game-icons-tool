@@ -100,7 +100,7 @@ export default class ListCommand implements ICommand {
 
   command: string = "generate <language> <source> <output>";
   description: string =
-    "Generates a class for icon mapping\n\nExample: gameicons generate dart downloads downloads/code";
+    "Generates a class for icon mapping\n\nExample: gameicons generate dart workspace/downloads workspace/code";
   constructor(
     private readonly program: Command,
     private readonly services: Map<string, any>

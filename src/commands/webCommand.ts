@@ -25,7 +25,7 @@ export default class WebCommand implements ICommand {
   private readonly progressBar: SingleBar;
 
   command = "web <source> <output>";
-  description = `Generates svg and css for web icons.\n\nExample: gameicons web downloads downloads/web`;
+  description = `Generates svg and css for web icons.\n\nExample: gameicons web workspace/downloads workspace/web`;
 
   constructor(
     private readonly program: Command,
