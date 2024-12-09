@@ -67,15 +67,15 @@ export default class WebCommand implements ICommand {
 
   private async generateSvg(output: string) {
     let fileCount = 0;
-    let unicodeCounter = 0xe0001;
+    let unicodeCounter = 0xE900;
 
     const options = {
-      fontName: "game-icons-font",
+      fontName: "GameIcons",
       log: console.log,
     };
 
     const fontStream = new SVGIcons2SVGFontStream(options);
-    const fontFilePath = path.join(output, "game-icons-font.svg");
+    const fontFilePath = path.join(output, "GameIcons.svg");
     fontStream.pipe(createWriteStream(fontFilePath));
 
     this.progressBar.start(this.files.length, 0, {
@@ -113,7 +113,7 @@ export default class WebCommand implements ICommand {
   private async generateCss(output: string) {
     let unicodeCounter = 0xe0001;
     let fileCount = 0;
-    const cssFilePath = path.join(output, "game-icons-font.css");
+    const cssFilePath = path.join(output, "GameIcons.css");
     const cssStream = createWriteStream(cssFilePath);
 
     this.progressBar.start(this.files.length, 0, {
@@ -122,14 +122,14 @@ export default class WebCommand implements ICommand {
 
     cssStream.write(
       `@font-face {
-  font-family: 'game-icons-font';
-  src: url('game-icons-font.svg') format('svg');
+  font-family: 'GameIcons';
+  src: url('GameIcons.svg') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
 .game-icon {
-  font-family: 'game-icons-font';
+  font-family: 'GameIcons';
   display: inline-block;
   font-style: normal;
   font-weight: normal;
@@ -138,7 +138,7 @@ export default class WebCommand implements ICommand {
 
 .game-icon::before {
   content: attr(data-icon);
-  font-family: 'game-icons-font';
+  font-family: 'GameIcons';
 }
 `
     );

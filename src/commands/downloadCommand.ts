@@ -30,7 +30,7 @@ export default class DownloadCommand implements ICommand {
     }
 
     const url =
-      "https://game-icons.net/archives/svg/zip/000000/ffffff/game-icons.net.svg.zip";
+      "https://game-icons.net/archives/svg/zip/000000/transparent/game-icons.net.svg.zip";
     try {
       ensureDirSync(output);
       console.log(`Output folder "${output}" was ready!`);

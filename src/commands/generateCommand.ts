@@ -12,6 +12,7 @@ type SvgFile = {
 };
 
 type StubData = {
+  fileName: string;
   headerStub: string;
   bodyStub: string;
   footerStub: string;
@@ -143,12 +144,13 @@ export default class ListCommand implements ICommand {
     switch (language) {
       case "dart":
         return {
+          fileName: "game_icons.dart",
           headerStub: `import 'package:flutter/widgets.dart';
 
-class GameIconsFont {
-  GameIconsFont._();
+class GameIcons {
+  GameIcons._();
 
-  static const _kFontFam = 'game-icons-font';
+  static const _kFontFam = 'GameIcons';
   static const String? _kFontPkg = null;\n\n`,
           bodyStub: `  static const IconData #iconName# = IconData(#unicodeValue#, fontFamily: _kFontFam, fontPackage: _kFontPkg);\n`,
           footerStub: `}`,
@@ -177,11 +179,13 @@ class GameIconsFont {
 
   private async generateCode(language: string, output: string) {
     let fileCount = 0;
-    let unicodeCounter = 0xe0001;
+    let unicodeCounter = 0xe900;
+
+    const stub = this.getLanguageStub(language);
 
     const fontFilePath = path.join(
       output,
-      `game_icons_font.${language.toLowerCase()}`
+      `${stub.fileName}`
     );
     const codeStream = createWriteStream(fontFilePath);
 
@@ -189,7 +193,6 @@ class GameIconsFont {
       type: `Generating ${language.toLowerCase()} code`,
     });
 
-    const stub = this.getLanguageStub(language);
     codeStream.write(stub.headerStub);
 
     for (const svgFile of this.files) {

@@ -68,14 +68,14 @@ export default class FontCommand implements ICommand {
 
   private async generateTtf(output: string) {
     let fileCount = 0;
-    let unicodeCounter = 0xE0001;
+    let unicodeCounter = 0xE900;
   
     const options = {
-      fontName: "game-icons-font",
+      fontName: "GameIcons",
       log: console.log,
     };
   
-    const svgFontPath = path.join(output, "game-icons-font.svg");
+    const svgFontPath = path.join(output, "GameIcons.svg");
     const fontStream = new SVGIcons2SVGFontStream(options);
     const svgWriteStream = createWriteStream(svgFontPath);
   
@@ -124,7 +124,7 @@ export default class FontCommand implements ICommand {
 
     const ttf = svg2ttf(svgFontContent, {});
   
-    const ttfPath = path.join(output, "game-icons-font.ttf");
+    const ttfPath = path.join(output, "GameIcons.ttf");
     await fs.promises.writeFile(ttfPath, Buffer.from(ttf.buffer));
   
     console.log(chalk.green.bold(`TTF font generated successfully at ${ttfPath}`));
