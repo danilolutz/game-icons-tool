@@ -1,5 +1,5 @@
 import chalk from "chalk";
-import { ICommand } from "../interfaces/ICommand";
+import { ICommand } from "../interfaces/ICommand.js";
 import { Command } from "commander";
 import Table from "cli-table3";
 import figlet from "figlet";

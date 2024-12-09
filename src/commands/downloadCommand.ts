@@ -1,7 +1,7 @@
 import axios from "axios";
 import path from "path";
 import { createWriteStream } from "fs";
-import { ICommand } from "../interfaces/ICommand";
+import { ICommand } from "../interfaces/ICommand.js";
 import { Command } from "commander";
 import { ensureDirSync } from "fs-extra";
 import AdmZip from "adm-zip";

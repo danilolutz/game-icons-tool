@@ -2,7 +2,7 @@
 
 import { Command } from "commander";
 import path from "path";
-import { CommandLoader } from "./utils/CommandLoader";
+import { CommandLoader } from "./utils/CommandLoader.js";
 import { fileURLToPath } from "url";
 
 (async () => {
@@ -26,5 +26,5 @@ import { fileURLToPath } from "url";
   const commandsPath = path.join(__dirname, "commands");
   await commandLoader.loadCommands(commandsPath, services);
 
-  program.parse();
+  program.parse(process.argv);
 })();

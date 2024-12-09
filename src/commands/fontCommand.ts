@@ -1,4 +1,4 @@
-import { ICommand } from "../interfaces/ICommand";
+import { ICommand } from "../interfaces/ICommand.js";
 import { Command } from "commander";
 import path from "path";
 import { SVGIcons2SVGFontStream } from "svgicons2svgfont";

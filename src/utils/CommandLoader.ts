@@ -1,6 +1,6 @@
 import fs from "fs";
 import { Command } from "commander";
-import { ICommand } from "../interfaces/ICommand";
+import { ICommand } from "../interfaces/ICommand.js";
 
 export class CommandLoader {
   constructor(private readonly program: Command) {
