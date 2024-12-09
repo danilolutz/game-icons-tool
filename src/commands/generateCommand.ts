@@ -21,6 +21,82 @@ export default class ListCommand implements ICommand {
   private readonly files: SvgFile[] = [];
   private readonly buffer: string[] = [];
   private readonly progressBar: SingleBar;
+  private reservedWords = new Set([
+    "abstract",
+    "as",
+    "assert",
+    "async",
+    "await",
+    "break",
+    "case",
+    "catch",
+    "class",
+    "const",
+    "continue",
+    "default",
+    "deferred",
+    "do",
+    "dynamic",
+    "else",
+    "enum",
+    "export",
+    "extends",
+    "extension",
+    "external",
+    "factory",
+    "false",
+    "final",
+    "finally",
+    "for",
+    "function",
+    "get",
+    "hide",
+    "if",
+    "implements",
+    "import",
+    "in",
+    "interface",
+    "is",
+    "library",
+    "mixin",
+    "new",
+    "null",
+    "on",
+    "operator",
+    "part",
+    "required",
+    "rethrow",
+    "return",
+    "set",
+    "show",
+    "static",
+    "super",
+    "switch",
+    "sync",
+    "this",
+    "throw",
+    "true",
+    "try",
+    "typedef",
+    "var",
+    "void",
+    "while",
+    "with",
+    "yield",
+  ]);
+
+  private numberMap: Record<string, string> = {
+    "0": "zero",
+    "1": "one",
+    "2": "two",
+    "3": "three",
+    "4": "four",
+    "5": "five",
+    "6": "six",
+    "7": "seven",
+    "8": "eight",
+    "9": "nine",
+  };
 
   command: string = "generate <language> <source> <output>";
   description: string =
@@ -67,14 +143,13 @@ export default class ListCommand implements ICommand {
     switch (language) {
       case "dart":
         return {
-          headerStub: `
-import 'package:flutter/widgets.dart';
+          headerStub: `import 'package:flutter/widgets.dart';
 
 class GameIconsFont {
   GameIconsFont._();
 
   static const _kFontFam = 'game-icons-font';
-  static const String? _kFontPkg = null;\n`,
+  static const String? _kFontPkg = null;\n\n`,
           bodyStub: `  static const IconData #iconName# = IconData(#unicodeValue#, fontFamily: _kFontFam, fontPackage: _kFontPkg);\n`,
           footerStub: `}`,
         };
@@ -85,7 +160,21 @@ class GameIconsFont {
   }
 
   private kebabToCamelCase(input: string): string {
-    return input.replace(/-([a-z0-9])/g, (_, char) => char.toUpperCase());
+    if (/^\d/.test(input)) {
+      input = input.replace(/^(\d)/, (digit) => this.numberMap[digit]);
+    }
+
+    let camelCase = input.replace(/-([a-z0-9])/g, (_, char) =>
+      char.toUpperCase()
+    );
+
+    // camelCase.replace(/\d/g, (digit) => this.numberMap[digit]);
+
+    if (this.reservedWords.has(camelCase)) {
+      camelCase += "_";
+    }
+    // console.log(camelCase);
+    return camelCase;
   }
 
   private async generateCode(language: string, output: string) {
