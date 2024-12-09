@@ -28,7 +28,7 @@ And now we can use and of the other commands to generate whatever we want:
 gameicons generate dart workspace/downloads workspace/code
 ```
 
-So, simple hein!?
+So simple, hein!?
 
 ## Installation
 
