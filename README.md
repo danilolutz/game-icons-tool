@@ -1,6 +1,6 @@
 # Game Icons Tool
 
-A CLI tool to create icons svg, css and others like dart icons class from https://game-icons.net.
+A CLI tool to create icons svg, css and others like dart icons class from [https://game-icons.net](https://game-icons.net).
 
 ## Available commands
 
@@ -36,8 +36,7 @@ So, simple hein!?
 yarn global add gameicons # or npm install --global gameicons
 ```
 
-Thanks for use!
-
+Thanks for use! And don't forget to credit [https://game-icons.net](https://game-icons.net) for the icons.
 
 
 ---
