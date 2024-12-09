@@ -33,7 +33,7 @@ So simple, hein!?
 ## Installation
 
 ```bash
-yarn global add gameicons # or npm install --global gameicons
+yarn global add game-icons-tool # or npm install --global game-icons-tool
 ```
 
 Thanks for use! And don't forget to credit [https://game-icons.net](https://game-icons.net) for the icons.
