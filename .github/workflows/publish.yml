@@ -1,4 +1,4 @@
-name: Publish to npm
+name: Publish to npm and GitHub Release
 
 on:
   push:
@@ -13,17 +13,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup Node.js
+      - name: Setup Yarn
         uses: actions/setup-node@v3
         with:
           node-version: 20
-          cache: 'npm'
+          cache: 'yarn'
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Install dependencies with Yarn
+        run: yarn install --frozen-lockfile
 
       - name: Build the project
-        run: npm run build
+        run: yarn build
 
       - name: Generate Changelog
         id: changelog
@@ -37,7 +37,7 @@ jobs:
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
 
       - name: Publish to npm
-        run: npm publish --access --dry-run public
+        run: yarn publish --non-interactive --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
